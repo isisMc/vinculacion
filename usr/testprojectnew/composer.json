@@ -1,0 +1,16 @@
+{
+    "name": "isis/testprojectnew",
+    "require": {
+        "phpoffice/phpword": "^0.18.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Isis\\Testprojectnew\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "isiscenteno"
+        }
+    ]
+}

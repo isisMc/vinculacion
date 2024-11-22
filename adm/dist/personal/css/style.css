@@ -1,0 +1,5 @@
+.max_width_table {
+    max-width: 200vh;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+}
