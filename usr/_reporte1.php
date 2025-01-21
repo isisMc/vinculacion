@@ -1,6 +1,12 @@
 <?php
 session_start();
-
+if(isset($_SESSION["status_actual"]) && isset($_SESSION["usr_estatus"])){
+  if($_SESSION['status_actual'] == 1 || $_SESSION['status_actual'] == 2 || $_SESSION["usr_estatus"]!= 1){
+       header("location: index.php");
+  }
+} else {
+  header("location: index.php");
+}
 if (isset($_SESSION['usr_log'])) {
   $usuario = explode("|", $_SESSION['usr_log']);
   $idAlumno = $usuario[0];
@@ -38,7 +44,7 @@ require("../config/conexion/conexion.php");
       $departamento = $row['departamento'];
       $inicio = $row['inicio'];
       $termino = $row['termino'];
-       $sql_empresa = "SELECT * FROM empresas WHERE idEmpresa = '$idEmpresa'";  // Asegúrate de que el nombre de la tabla y columna es correcto
+       $sql_empresa = "SELECT * FROM empresas WHERE idEmpresa = '$idEmpresa'";  
         $result_empresa = $conn->query($sql_empresa);
 
         if ($result_empresa->num_rows > 0) {
@@ -202,12 +208,12 @@ require("../config/conexion/conexion.php");
                           <label for="especialidad" class="form-label">Especialidad:</label>
                           <input class="form-control rounded-pill mb-3" id="especialidad" name="especialidad" value="<?php echo $especialidad; ?>" disabled />
                         </div>
-                        <div class="col-sm-4 col-lg-4">
+                        <div class="col-sm-6 col-lg-4">
                           <label for="semestre" class="form-label">Semestre:</label>
                           <input class="form-control rounded-pill mb-3" type="text" id="semestre" name="semestre" value="<?php echo $semestre; ?>" disabled />
 
                         </div>
-                        <div class="col-sm-4 col-lg-4">
+                        <div class="col-sm-6 col-lg-4">
                           <label for="grupo" class="form-label">Grupo:</label>
                           <input class="form-control rounded-pill mb-3" type="text" id="grupo" name="grupo" value="<?php echo $grupo; ?>" disabled />
                         </div>
@@ -218,11 +224,15 @@ require("../config/conexion/conexion.php");
                         <div class="col-12 mb-3">
                           <h4 id="tit" class="text-center fw-bold">2.- Datos de la empresa</h4>
                         </div>
-                        <div class="col-sm-4 col-lg-6">
+                        <div class="col-sm-4 col-lg-6 hidden">
+                          <label for="idAlumno" class="form-label">idAlumno:</label>
+                          <input class="form-control rounded-pill mb-3" type="text" id="idAlumno" name="idAlumno" value="<?php echo $idAlumno ?>" disabled />
+                        </div>
+                        <div class="col-sm-12 col-lg-6">
                           <label for="empresa" class="form-label">Empresa:</label>
                           <input class="form-control rounded-pill mb-3" type="text" id="empresa" name="empresa" value="<?php echo $nombreEmpresa ?>" disabled />
                         </div>
-                        <div class="col-sm-4 col-lg-6">
+                        <div class="col-sm-6 col-lg-6">
                           <label for="direcEmpresa" class="form-label">Direccion:</label>
                           <input class="form-control rounded-pill mb-3" type="text" id="direcEmpresa" name="direcEmpresa" value="<?php echo $direccion ?>" disabled />
                         </div>
@@ -230,11 +240,11 @@ require("../config/conexion/conexion.php");
                           <label for="area" class="form-label">Area donde realizara sus practicas profesionales:</label>
                           <input type="text" class="form-control rounded-pill mb-3" id="area" name="area" value="<?php echo $departamento ?>" disabled/>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6 col-lg-6">
                           <label for="inicio" class="form-label colorFondoDos">Inicio:</label>
                           <input class="form-control rounded-pill mb-3" type="date" id="inicio" name="inicio" value="<?php echo $inicio ?>" disabled/>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6 col-lg-6">
                           <label for="termino" class="form-label colorFondoDos">Termino:</label>
                           <input class="form-control rounded-pill mb-3" type="date" id="termino" name="termino" value="<?php echo $termino ?>" disabled/>
 

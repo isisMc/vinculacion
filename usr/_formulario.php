@@ -1,6 +1,12 @@
 <?php
     session_start();
-
+    if(isset($_SESSION["status_actual"]) && isset($_SESSION["usr_estatus"])){
+        if($_SESSION['status_actual'] !== 0  || $_SESSION["usr_estatus"] > 0){
+             //header("location: index.php");
+        }
+      } else {
+        header("location: index.php");
+      }
     if (isset($_SESSION['usr_log'])) {
         set_error_handler(function($errno, $errstr, $errfile, $errline) {
             // error was suppressed with the @-operator
@@ -39,7 +45,6 @@
         header("location:index.php");
     }
 ?>
-
 <!DOCTYPE html>
 
 <html lang="en">

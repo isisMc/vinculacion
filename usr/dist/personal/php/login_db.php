@@ -2,6 +2,7 @@
    session_start();
 
    $_SESSION['usr_log'] = 'USER';
+   $_SESSION['status_update'] = 'STATUS';
 
    require_once("../../../../config/conexion/conexion.php");
    $json = array();
@@ -24,6 +25,7 @@
                   'nombre' => 'Error: Usuario no encontrado'
                );  
             } else {
+
                $row = $resultado->fetch_array();
                $json[] = array(
                   'clave' => 'ok',
@@ -52,13 +54,26 @@
                . "|".$row['noctrl']. "|".$row['curp'];
    
                $id_alumno = $row['idAlumno'];
-         
-               $sql_2 = "SELECT * FROM solicitudes WHERE idAlumno = '$id_alumno'";
-   
-               if ($resultado_2 = $conn->query($sql_2)) {
-                  $row_2 = $resultado_2->fetch_array();
-                  $_SESSION['usr_estatus'] = $row_2['yaEntrego'];
-                  $_SESSION['status_actual'] = $row_2['status'];
+
+              $sql_2 = "SELECT * FROM solicitudes WHERE idAlumno = '$id_alumno'";
+              $resultado_2 = $conn->query($sql_2);
+              if ($resultado_2 && $resultado_2->num_rows > 0) {
+                 $row_2 = $resultado_2->fetch_array();
+                 $_SESSION['usr_estatus'] = $row_2['yaEntrego'];
+                 $_SESSION['status_actual'] = $row_2['status'];
+              } else {
+                  $sql_insert = "INSERT INTO solicitudes (idAlumno, status, yaEntrego) VALUES ('$id_alumno', 0, 0)";
+                  
+                  if ($conn->query($sql_insert) === TRUE) {
+                     // Si la inserción es exitosa, establecemos el estatus
+                     $_SESSION['usr_estatus'] = 0;
+                     $_SESSION['status_actual'] = 0;
+                  } else {
+                     $json[] = array(
+                        'clave' => 'error',
+                        'nombre' => 'Error al insertar en solicitudes: ' . $conn->error
+                     );
+                  }
                }
             } 
          } else{

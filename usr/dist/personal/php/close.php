@@ -3,5 +3,5 @@ session_start();
 session_unset();
 session_destroy();
 
-header('Location: ../pages/login.php');
+header('Location: vinculacion/usr/pages/personal/login.php');
 exit();

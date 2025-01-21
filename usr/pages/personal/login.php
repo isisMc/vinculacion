@@ -13,6 +13,7 @@
 
 </head>
 <body>
+    
     <div class="container">
         <div class="curved-shaped"></div>
         <div class="form-box Login">
@@ -45,7 +46,6 @@
             <i class="fa fa-sun" id="light-mode-icon"></i>
         </div>
     </div>
-
     <!-- MODAL -->
     <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

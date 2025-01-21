@@ -31,7 +31,7 @@
                     $row = $resultado->fetch_assoc();
                     $nuevoValorYaEntrego = $row['yaEntrego'] + 1;
 
-                    $stmt = $conn->prepare("UPDATE solicitudes SET status = 2, yaEntrego = " . $nuevoValorYaEntrego . " WHERE idAlumno = " . $id . ";");
+                    $stmt = $conn->prepare("UPDATE solicitudes SET status = 0, yaEntrego = " . $nuevoValorYaEntrego . " WHERE idAlumno = " . $id . ";");
 
                     if (!$stmt) {
                         $json[] = array(

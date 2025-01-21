@@ -34,8 +34,8 @@ formulario2.addEventListener("submit", (e) => {
 function enviarDatos() {
   const formData = new FormData(formulario2);
 formData.append("idAlumno", idAlumno.value);
-formData.append("fecha1", fechaEnvio.value);
-  fetch("dist/personal/php/insertReporte1.php", {
+formData.append("fecha2", fechaEnvio.value);
+  fetch("dist/personal/php/insertReporte2.php", {
     method: "POST",
     body: formData,
   })

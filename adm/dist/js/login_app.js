@@ -32,7 +32,7 @@ form_admin.addEventListener("submit", (e) => {
             sessionStorage.setItem("nombre",data[0].nombre);   
             sessionStorage.setItem("img",data[0].img);                
 
-            location.href = "../../index.html";
+            location.href = "../../index.php";
         } else {
             showErrorModal();
         }

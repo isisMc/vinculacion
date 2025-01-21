@@ -34,7 +34,7 @@
     <!-- Derecha Navbar -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
-        <a href="index.html" id="a_numNoti" class="nav-link">
+        <a href="index.php" id="a_numNoti" class="nav-link">
           <i class="fas fa-bell"></i>
           <span class="badge badge-warning navbar-badge" id="numNoti"></span>
         </a>
@@ -77,7 +77,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
            <li class="nav-item menu-open">
-            <a href="index.html" class="nav-link">
+            <a href="index.php" class="nav-link">
               <i class="nav-icon fas fa-solid fa-home"></i>
               <p>
                 Inicio
