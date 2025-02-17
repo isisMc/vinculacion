@@ -3,3 +3,6 @@
     overflow-x: scroll;
     scrollbar-width: thin;
 }
+.hidden{
+    display: none;
+}

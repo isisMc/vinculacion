@@ -41,7 +41,6 @@ if ($conn->connect_error) {
             $json[] = [
                 'clave' => 'ok',
                 'img' => $alumno['img'],
-                'fechaEnvio' => $alumno['fechaEnvio'],
                 'nombres' => $alumno['nombres'],
                 'paterno' => $alumno['paterno'],
                 'materno' => $alumno['materno'],
@@ -63,7 +62,7 @@ if ($conn->connect_error) {
             ];
 
             $_SESSION['plantilla'] = implode('|', [
-                $alumno['idAlumno'], $alumno['img'], $alumno['fechaEnvio'], $alumno['nombres'],
+                $alumno['idAlumno'], $alumno['img'], $alumno['nombres'],
                 $alumno['paterno'], $alumno['materno'], $alumno['direccion'], $alumno['noint'],
                 $alumno['noext'], $alumno['cp'], $alumno['colonia'], $alumno['estado'],
                 $alumno['municipio'], $alumno['telefono'], $alumno['sexo'], $alumno['especialidad'],

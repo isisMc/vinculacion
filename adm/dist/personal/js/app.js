@@ -35,11 +35,12 @@ noti_container.addEventListener("click", e => {
 
     let id = "";
 
-    if (e.target.parentNode.parentNode.parentNode.childNodes[1].textContent.length <= 10)
+    if (e.target.parentNode.parentNode.parentNode.childNodes[1].textContent.length <= 10){
         id = e.target.parentNode.parentNode.parentNode.childNodes[1].textContent
-    else
-        id = e.target.parentNode.parentNode.childNodes[1].textContent;
-
+    }else{
+        idT = e.target.parentNode.parentNode.childNodes[1].textContent;
+        id = idT.trim();
+    }
     if (clasesPer == "btn-denegar") {
         denegar(id,pro);
     } else {
@@ -75,12 +76,12 @@ function revisar_notificaciones() {
                             </td>
                             <td>
                             
-                                <button id="${data[i].id}" class="btn btn-warning border-0 mx-1">
+                                <button id="${data[i].id}" class="btn btn-light border-0 mx-1">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </td>
                             <td>
-                                <button class="btn btn-warning border-0 mx-1 btn-aceptar">
+                                <button class="btn btn-success border-0 mx-1 btn-aceptar">
                                     <i class="fas fa-check"></i>
                                 </button>
                                 <button class="btn btn-danger border-0 mx-1 btn-denegar">
@@ -248,7 +249,6 @@ function abrir_plantilla(id, proceso) {
                 } else {
                     img = "../usr/"+ data[0].img;
                 }
-                fechaEnvio = data[0].fechaEnvio;
                 nombres = data[0].nombres;
                 paterno = data[0].paterno;
                 materno = data[0].materno;
@@ -353,11 +353,6 @@ function createDynamicModal(proceso) {
                         </div>
                         <div class="col-6 my-2 d d-none d-lg-block">
                             <h4 id="title" class="text-center">1.-Datos personales</h4>
-                        </div>
-                        <div class="col-sm-12 col-lg -3 my-auto">
-                            <label for="fechaEnvio" class="form-label  my-auto">Fecha: </label>
-                            <input class="form-control rounded-pill px-0 px-0 text-center" type="date"
-                                id="fechaEnvio" name="fechaEnvio" value="${fechaEnvio}" disabled />
                         </div>
                         <div class="col-sm-6 col-lg-4">
                             <label for="nombres" class="form-label">Nombre(s): </label>

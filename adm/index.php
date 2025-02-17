@@ -57,7 +57,7 @@
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="dist/img/logotipo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 " style="opacity: .8">
-      <span class="brand-text font-weight-light">Nombre Proyecto</span>
+      <span class="brand-text font-weight-light">SISRGPP</span>
     </a>
 
     <div class="sidebar">
@@ -128,7 +128,7 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12 col-lg-7">
+          <div class="col-12 ">
             <div class="card d-none" id="card_noti">
               <div class="card-header border-0">
                 <h3 class="card-title">Notificaciones</h3>
@@ -150,7 +150,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-lg-7">
+          <div class="col-12 col-lg-8">
             <div class="card">
               <div class="card-header border-0">
                 <h3 class="card-title">Porcentaje de alumnos que ya empezaron sus practicas</h3>

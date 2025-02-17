@@ -1,15 +1,14 @@
 <?php
     session_start();
     if(isset($_SESSION["status_actual"]) && isset($_SESSION["usr_estatus"])){
-        if($_SESSION['status_actual'] !== 0  || $_SESSION["usr_estatus"] > 0){
-             //header("location: index.php");
+        if($_SESSION['status_actual'] == 1 ||$_SESSION['status_actual'] == 2 || $_SESSION["usr_estatus"] > 0){
+            header("location: index.php");
         }
       } else {
         header("location: index.php");
       }
     if (isset($_SESSION['usr_log'])) {
         set_error_handler(function($errno, $errstr, $errfile, $errline) {
-            // error was suppressed with the @-operator
             if (0 === error_reporting()) {
                 return false;
             }
@@ -95,7 +94,7 @@
             <a href="#" class="brand-link">
                 <img src="dist/img/logotipo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 "
                     style="opacity: .8">
-                <span class="brand-text font-weight-light">Nombre Proyecto</span>
+                <span class="brand-text font-weight-light">SISRGPP</span>
             </a>
 
             <div class="sidebar">
@@ -261,7 +260,7 @@
                                         <button class="btn btn-outline-light px-2 py-1 border-0" style="color: #FFD700;" type="button" disabled>
                                             <i class="fa-solid fa-circle-chevron-left fa-xl"></i>
                                         </button>
-                                        <button id="btn" class="btn btn-outline-light px-2 py-1 border-0" style="color: #FF4500;" title="SIGUIENTE" type="button">
+                                        <button id="btnSs" class="btn btn-outline-light px-2 py-1 border-0" style="color: #FF4500;" title="SIGUIENTE" type="button">
                                             <i class="fa-solid fa-circle-chevron-right fa-xl"></i>
                                         </button>
                                     </div>

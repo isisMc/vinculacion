@@ -26,8 +26,8 @@ if (!isset($_SESSION['usr_log'])) {
   if ($result->num_rows > 0) {
       $row = $result->fetch_assoc();
       $idEmpresa = $row['idEmpresa'];
-      $inicio = $row['inicio'];
-      $termino = $row['termino'];
+      $inicio = date("d-m-Y", strtotime($row['inicio']));
+      $termino = date("d-m-Y", strtotime($row['termino']));
       $departamento = $row['departamento']; 
        $sql_empresa = "SELECT * FROM empresas WHERE idEmpresa = '$idEmpresa'";  
         $result_empresa = $conn->query($sql_empresa);

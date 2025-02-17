@@ -12,9 +12,9 @@ const takeSnapshot = document.getElementById("takeSnapshot");
 const formDtUnicos = document.getElementById("formularioEmp");
 const takePictureButton = document.getElementById("takePicture");
 let actividades_textArea = document.getElementById("actividades");
-
+let btnSs = document.getElementById("btnSs");
 let enviado = 0;
-
+let subir = false;
 let today = new Date();
 
 let yyyy = today.getFullYear();
@@ -134,7 +134,7 @@ document.getElementById("salir").addEventListener("click", ()=>{
 
 // Inicio de las funciones de los formularios
 
-document.getElementById("btn").addEventListener("click", ( ) => {
+document.getElementById("btnSs").addEventListener("click", ( ) => {
   formFoto.classList.add("hidden");
   formEmpresa.classList.remove("hidden");
 });
@@ -195,7 +195,52 @@ formDtUnicos.addEventListener("submit", (e) => {
           console.error("Error en la solicitud:", error);
       });
 });
+if(direccion.value.trim()=== ""  || direccion.value.trim()=== null  || numext.value.trim()=== "" ||numext.value.trim()=== null ||numint.value.trim()=== "" ||numint.value.trim()=== null||
+ cp.value.trim()=== ""|| cp.value.trim()=== null||colonia.value.trim()=== ""|| colonia.value.trim()=== null ||telefono.value.trim()=== "" ||telefono.value.trim()=== null){
+ if(direccion.value.trim()=== ""  || direccion.value.trim()=== null){
+  direccion.removeAttribute('disabled');
+ }
+ if(numext.value.trim()=== ""  || numext.value.trim()=== null){
+  numext.removeAttribute('disabled');
+ }
+ if(numint.value.trim()=== ""  || numint.value.trim()=== null){
+  numint.removeAttribute('disabled');
+ }
+ if(cp.value.trim()=== ""  || cp.value.trim()=== null){
+  cp.removeAttribute('disabled');
+ }
+ if(colonia.value.trim()=== ""  || colonia.value.trim()=== null){
+  colonia.removeAttribute('disabled');
+ }
+ if(telefono.value.trim()=== ""  || telefono.value.trim()=== null){
+  telefono.removeAttribute('disabled');
+ }
+ subir = true;
+} 
 
+btnSs.addEventListener("click", (e) => {
+  if(subir == true){
+  e.preventDefault();
+
+  let dataN = new FormData(formFoto);
+  fetch("dist/personal/php/subir_datos.php", {
+    method: "POST",
+    body: dataN
+})
+    .then(response => response.json())
+    .then(data => {
+      if (data[0].clave !== "OK") {
+        alert(data[0].mensaje);
+      } 
+    })
+    .catch(error => {
+      location.href = "dist/personal/php/subir_datos.php";
+        console.error("Error en la solicitud:", error);
+      
+    });
+
+} 
+});
 //Fin de las funciones de los formualrios
 
 document.getElementById("searchInput").addEventListener("keyup", function() {

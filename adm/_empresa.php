@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>Administracion</title>
 
   <link rel="shortcut icon" href="dist/img/logotipo.png" type="image/x-icon">
-
+  <link href="dist/personal/css/style.css" rel="stylesheet"> 
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
@@ -60,7 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="dist/img/logotipo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 " style="opacity: .8">
-      <span class="brand-text font-weight-light">Nombre Proyecto</span>
+      <span class="brand-text font-weight-light">SISRGPP</span>
     </a>
 
     <div class="sidebar">
@@ -126,10 +126,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center justify-content-between">
           <div class="col-sm-6">
             <h1 class="m-0">Tabla Empresas</h1>
           </div>
+          <div class="col-auto d-flex gap-2">
+            
+                            <input type="file" id="fileInput" accept=".csv" style="display: none;">
+                        <button id="uploadButton" class="btn btn-dark"> <i class="fas fa-solid fa-download"></i></button>
+                            
+                            <button class="btn btn-dark">
+                                <i class="fas fa-solid fa-plus"></i>
+                            </button>
+                            <p id="fileName" class="mt-2 text-muted hidden"></p>
+                        </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -183,7 +193,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 echo ('<td> '. $row['tipo'] .' </td>');
                                 echo ('<td> '. $row['giro'] .' </td>');
                                 echo ('
-                                  <td>
+                                  <td class="hidden">
                                     <button type="button" class="btn btn-danger border-0">
                                       <i class="fas fa-solid fa-eraser"></i>
                                     </button>
@@ -223,7 +233,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <p>Sidebar content</p>
     </div>
   </aside>
-
+  <script src="dist/personal/js/empresascarga.js"></script>
   <script src="plugins/jquery/jquery.min.js"></script>
   <script src="dist/js/adminlte.min.js"></script>
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

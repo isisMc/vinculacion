@@ -13,6 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/personal/css/style.css">
 </head>
 <body class="hold-transition sidebar-mini dark-mode">
 <div class="wrapper">
@@ -60,7 +61,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="dist/img/logotipo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 " style="opacity: .8">
-      <span class="brand-text font-weight-light">Nombre Proyecto</span>
+      <span class="brand-text font-weight-light">SISRGPP</span>
     </a>
 
     <div class="sidebar">
@@ -177,7 +178,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 echo ('<td> '. $row['departamento'] .' </td>');
                                 echo ('<td> '. $row['nivel_acceso'] .' </td>');
                                 echo ('
-                                  <td>
+                                  <td class="hidden">
                                     <button type="button" class="btn btn-danger text-center border-0 m-1 btn-eliminar">
                                         <i class="fas fa-solid fa-eraser btn-eliminar"></i>
                                     </button>

@@ -7,7 +7,7 @@ if (!isset($_SESSION['usr_log'])) {
 } else {
     $usuario = explode("|", $_SESSION['usr_log']);
     $idAlumno = $usuario[0];
-    $img = $usuario[1]; // Ruta de la imagen del alumno desde la sesión
+    $img = $usuario[1]; 
     $nombres = $usuario[2];
     $paterno = $usuario[3];
     $materno = $usuario[4];
@@ -75,7 +75,6 @@ $templateProcessor->setValues([
     'direccion' => $direccion . " " . $noint . " " . $noext . " " . $cp,
     'colonia' => $colonia,
     'estado' => $estado,
-    'edad' => "17",
     'ciudad' => $municipio,
     'telefono' => $telefono,
     'sexo' => $sexo,
@@ -102,8 +101,11 @@ $templateProcessor->setValues([
     'departamento' => $departamento
 ]);
 
-// Integración de la imagen
-$rutaImagen = "../" . $img; // Ruta de la imagen del alumno
+if($img != ""){
+$rutaImagen = "../" . $img; 
+} else {
+   $rutaImagen = "../dist/img/usuarios/1.png";
+}
 $templateProcessor->setImageValue('imagen', [
     'path' => $rutaImagen,
     'width' => 150, // Ancho de la imagen en píxeles

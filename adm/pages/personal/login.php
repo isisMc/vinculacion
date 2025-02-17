@@ -36,7 +36,6 @@
                     </div>
                 </form>
             </div>
-            <div class="info-content Login"></div>
         </div>
         <div class="theme-switcher">
             <div class="toggle">

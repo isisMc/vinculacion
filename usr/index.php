@@ -21,7 +21,6 @@ if (isset($_SESSION['usr_log'])) {
 
 if (isset($_SESSION['usr_estatus'])) {
     $proceso_actual = $_SESSION['usr_estatus'];
-    
     if (is_array($proceso_actual) || is_string($proceso_actual)) {
         $proceso_actual = $proceso_actual[0]; 
     } else {
@@ -96,57 +95,26 @@ if (isset($_SESSION['usr_estatus'])) {
 if (isset($_SESSION['usr_estatus']) && isset($_SESSION['status_actual'])) {
     $status = $_SESSION["usr_estatus"];
     $statu = $_SESSION["status_actual"];
-    if ($statu == "0" || $statu == "3") {
+    if($status == "0" && $statu == "0") {
+        $mostrar_notificacion = false;
+    }else if ($statu == "0" || $statu == "3") {
         $mostrar_notificacion = true;
     } else {
         $mostrar_notificacion = false;
     }
     
-    $porcentaje = 0;
-    $horas = 0;
-
-    if ($statu == 1) {
-        if ($status == 1) {
-            $porcentaje = 0; 
-        } elseif ($status == 2) {
-            $porcentaje = 25;
-        } elseif ($status == 3) {
-            $porcentaje = 50; 
-        } elseif ($status == 4) {
-            $porcentaje = 75;
-        }
-    } elseif ($statu == 0) {
-        if ($status == 1) {
-            $porcentaje = 0; 
-        } elseif ($status == 2) {
-            $porcentaje = 25;
-        } elseif ($status == 3) {
-            $porcentaje = 50; 
-        } elseif ($status == 4) {
-            $porcentaje = 75;
-        }
-    } elseif ($statu == 2) {
-        if ($status == 1) {
-            $porcentaje = 25; 
-        } elseif ($status == 2) {
-            $porcentaje = 50; 
-        } elseif ($status == 3) {
-            $porcentaje = 75; 
-        } elseif ($status == 4) {
-            $porcentaje = 100; 
-        }
-    }
-    if($porcentaje != 0){
-        if($porcentaje == 25){
-            $horas = 60;
-        }else if($porcentaje == 50){
-            $horas = 120;
-        } else if($porcentaje == 75){
-            $horas = 180;
-        } else if($porcentaje == 100){
-            $horas = 240;
-        }
-    }
+    $porcentajeMap = [
+        0 => [1 => 0, 2 => 25, 3 => 50, 4 => 75, 5=> 100],
+        1 => [1 => 0, 2 => 25, 3 => 50, 4 => 75],
+        2 => [1 => 25, 2 => 50, 3 => 75, 4 => 100, 5 => 100]
+    ];
+    
+    $horasMap = [0 => 0, 25 => 60, 50 => 120, 75 => 180, 100 => 240];
+    
+    $porcentaje = $porcentajeMap[$statu][$status] ?? 0;
+    
+    $horas = $horasMap[$porcentaje] ?? 0;
+    
 }
 
 
@@ -213,7 +181,7 @@ if (isset($_SESSION['usr_estatus']) && isset($_SESSION['status_actual'])) {
             <a href="#" class="brand-link">
                 <img src="dist/img/logotipo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
-                <span class="brand-text font-weight-light">Nombre Proyecto</span>
+                <span class="brand-text font-weight-light">SISRGPP</span>
             </a>
 
             <div class="sidebar">
@@ -234,13 +202,13 @@ if (isset($_SESSION['usr_estatus']) && isset($_SESSION['status_actual'])) {
                         <li class="nav-item menu-open <?php echo($grupo_button[0]) ?>">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-solid fa-book"></i>
-                                <p>Formulario <i class="right fas fa-angle-left"></i></p>
+                                <p>Solicitud <i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview <?php echo($array_botones[0]) ?>">
                                 <li class="nav-item">
                                     <a href="_formulario.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Formulario</p>
+                                        <p>Solicitud</p>
                                     </a>
                                 </li>
                             </ul>
@@ -293,7 +261,7 @@ if (isset($_SESSION['usr_estatus']) && isset($_SESSION['status_actual'])) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-12">
-                            <h1 class="m-0 font-weight-bolder text-center text-uppercase text-light">Practicas
+                            <h1 class="m-0 font-weight-bolder text-center text-uppercase text-light">Prácticas
                                 Profesionales</h1>
                         </div>
                     </div>
@@ -305,7 +273,7 @@ if (isset($_SESSION['usr_estatus']) && isset($_SESSION['status_actual'])) {
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="col-12 mb-4">
-                                <h3 class="text-center font-weight-bolder text-light">Información De Las Practicas
+                                <h3 class="text-center font-weight-bolder text-light">Información De Las Prácticas
                                     Profesionales</h3>
                             </div>
 
@@ -313,19 +281,19 @@ if (isset($_SESSION['usr_estatus']) && isset($_SESSION['status_actual'])) {
                                 <div class="col-12 col-md-6 col-lg-3 mb-4">
                                     <div class="card text-center" style="background-color: #2c3e50; color: #ecf0f1;">
                                         <div class="card-header border-0">
-                                            <h3 class="font-weight-bolder">ESTADOS DE LAS PRACTICAS</h3>
+                                            <h3 class="font-weight-bolder">ESTADOS DE LAS PRACTICÁS</h3>
                                         </div>
                                         <div class="card-body table-responsive p-0">
                                             <table class="table table-striped table-valign-middle">
                                                 <thead>
                                                     <tr>
-                                                        <th>Proceso</th>
-                                                        <th>Estado</th>
+                                                        <th class="h4">PROCESO</th>
+                                                        <th class="h4">ESTADO</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td class="proceso font-weight-bold">Formulario</td>
+                                                        <td class="proceso font-weight-bold">Solicitud</td>
                                                         <td class="estado <?php echo($estados_color[0]) ?>">
                                                             <?php echo($estados_array[0]) ?></td>
                                                     </tr>
@@ -378,7 +346,7 @@ if (isset($_SESSION['usr_estatus']) && isset($_SESSION['status_actual'])) {
                                         <div class="card-body rounded">
                                             <h4 class="text-center text-light mb-3">Importancia</h4>
                                             <p style="color: #ecf0f1;">
-                                                Las practicas solo se pueden realizar
+                                                Las prácticas solo se pueden realizar
                                                 en aquellos lugares donde realmente se pueda ejercer el área de tu
                                                 especialidad.Realizar tus prácticas profesionales es elemental para tu
                                                 formación académica, ya que reafirmas

@@ -10,17 +10,16 @@ if ($conn->connect_error) {
 } else {
     $id = $_POST['id'];
     $status = $_POST['status'];
-    $proceso = $_POST['proceso'];
+    $proceso = isset($_POST['proceso']) ? $_POST['proceso'] : null;
     $mensaje = isset($_POST['mensaje']) ? $_POST['mensaje'] : null;
 
     // Actualizar el estado de la solicitud
-    $stmt = $conn->prepare("UPDATE `vinculacion`.`solicitudes` SET `status`=? WHERE `idAlumno`=?;");
+    $stmt = $conn->prepare("UPDATE `solicitudes` SET `status`=? WHERE `idAlumno`=?;");
     if (!$stmt) {
         $json[] = array(
             'clave' => 'ERROR',
             'mensaje' => 'Error al preparar la consulta.'
         );
-        echo json_encode($json);
         exit;
     }
 
@@ -29,7 +28,7 @@ if ($conn->connect_error) {
     if ($stmt->execute()) {
         if ($status == 3 && !empty($mensaje)) {
             // Guardar el mensaje de rechazo si existe
-            $stmt_mensaje = $conn->prepare("INSERT INTO `vinculacion`.`mensajes_rechazo` (`idAlumno`, `mensaje`,`proceso`) VALUES (?, ?, ?);");
+            $stmt_mensaje = $conn->prepare("INSERT INTO `mensajes_rechazo` (`idAlumno`, `mensaje`,`proceso`) VALUES (?, ?, ?);");
             if ($stmt_mensaje) {
                 $stmt_mensaje->bind_param('isi', $id, $mensaje, $proceso);
                 if ($stmt_mensaje->execute()) {

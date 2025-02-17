@@ -33,11 +33,10 @@
                     <button class="btn text-light" type="submit">ACCEDER</button>
                 </div>
                 <div class="regi-link">
-                    <p>Iniciar sesion como <a href="../../../adm/pages/personal/login.php" class="SignUpLink">Administardor</a></p>
+                    <p>Iniciar sesion como <a href="../../../adm/pages/personal/login.php" class="SignUpLink">Administrador</a></p>
                 </div>
             </form>
         </div>
-        <div class="info-content Login"></div>
     </div>
     <div class="theme-switcher">
         <div class="toggle">

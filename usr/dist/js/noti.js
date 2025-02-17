@@ -68,9 +68,10 @@ function descragar(ruta) {
     });
 }
 } else if (stats == 3) {
+    entrega = entrega +1;
 let form = new FormData();
 form.append("idAlumno", idAlumno);
-form.append("proceso", entrega + 1);
+form.append("proceso", entrega);
 
 fetch('dist/personal/php/mensajes.php', {
     method: "POST",
@@ -81,11 +82,13 @@ fetch('dist/personal/php/mensajes.php', {
         if (data[0].clave === "ok") {
             mensajeRechazo = data[0].datosRechazo;
             actualizarMenuRechazo(mensajeRechazo, entrega);
+        } else {
+            mensajeRechazo = "";
+            actualizarMenuRechazo(mensajeRechazo, entrega);
         }
     })
     .catch(error => alert("Error: " + error));
 }
-
 function actualizarMenuRechazo(mensaje, entrega) {
 const notificationData = {
     0: {
