@@ -13,10 +13,6 @@ function showErrorModal() {
     let modal = new bootstrap.Modal(document.getElementById('errorModal'));
     modal.show();
 }
-document.getElementById("adminLogin").addEventListener("click", function(event) {
-    event.preventDefault();
-    window.location.href = "../../../adm/pages/personal/login.php";
-});
 
 form.addEventListener("submit", (e) => {
     if (!form.checkValidity()) {

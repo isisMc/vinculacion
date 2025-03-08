@@ -140,6 +140,54 @@ body{
     z-index: -1;
     transition: .5s;
 }
+.button-header {
+    position: absolute; 
+    top: 5px;           
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    gap: 20px;           
+    padding: 5px 10px;
+}
+
+ .dark-mode.btn-admin.active {
+    background-color: #330000; 
+    color: #ffffff;            
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.btn-admin.active {
+    background-color: #330000; 
+    color: #ffffff;            
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.dark-mode .btn-nav{
+    background: none;    
+    color: #ffffff;      
+    font-weight: bold;   
+    text-decoration: none;
+    padding: 5px 10px;
+    border: none;
+}
+.btn-nav {
+    background: none;    
+    color: #000000;      
+    font-weight: bold;   
+    text-decoration: none;
+    padding: 5px 10px;
+    border: none;
+}
+
 .dark-mode .btn::before{
     content: "";
     position: absolute;

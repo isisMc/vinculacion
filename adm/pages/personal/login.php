@@ -16,6 +16,12 @@
         <div class="container">
             <div class="curved-shaped"></div>
             <div class="form-box Login">
+            <div class="button-header">
+  <a href="../../../usr/pages/personal/login.php" class="btn-nav">Estudiante</a>
+  <a href="#" class="btn-admin active">Administrador</a>
+  <a href="../../../guess/guess.php" class="btn-nav">Invitado</a>
+</div>
+
                 <h2 class="txt">INICIO DE SESIÓN</h2>
                 <form id="form_admin">
                     <div class="input-box">
@@ -30,9 +36,6 @@
                     </div>
                     <div class="input-box">
                         <button class="btn text-white" type="submit">ACCEDER</button>
-                    </div>
-                    <div class="regi-link">
-                        <p>Iniciar sesion como <a href="../../../usr/pages/personal/login.php" class="SignUpLink">Estudiante</a></p>
                     </div>
                 </form>
             </div>

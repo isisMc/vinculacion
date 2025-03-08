@@ -6,5 +6,5 @@
     } else if (isset($_SESSION['adm_log'])) {
         header('location:adm/index.php');
     } else {
-        header('location:usr/pages/personal/login.php');
+        header('location:guess/guess.php');
     }
